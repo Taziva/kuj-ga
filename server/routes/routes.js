@@ -7,4 +7,8 @@ router.get('/',function(req, res){
   })
 })
 
+router.post('/coordinates/new',function(req, res){
+  res.send("muhaha")
+})
+
 module.exports = router;

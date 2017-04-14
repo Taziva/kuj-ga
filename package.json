@@ -4,7 +4,7 @@
   "description": "Kuj-ga uses geolocation to find out where you are and gives you a list of restaurants and bars close to you, with directions.",
   "main": "server/app.js",
   "scripts": {
-    "test": "mocha test/**/*.js",
+    "test": "mocha test/**/*-test.js",
     "start": "node server/app.js"
   },
   "keywords": [],
