@@ -1,0 +1,12 @@
+{
+  "name": "kuj-ga",
+  "version": "1.0.0",
+  "description": "Kuj-ga uses geolocation to find out where you are and gives you a list of restaurants and bars close to you, with directions.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
