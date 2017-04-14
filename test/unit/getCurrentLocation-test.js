@@ -4,6 +4,7 @@ const nock = require('nock');
 const expect = require('chai').expect;
 
 describe('getCurrentLocation', function() {
+
   it("should be a function", function(){
     expect(getCurrentLocation).to.be.a('function');
   });

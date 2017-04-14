@@ -1,3 +1,4 @@
+var expect = chai.expect;
 describe('getCurrentLocation', function() {
   before(function() {
     var Geoposition = { coords:{latitude:50,longitude:4}}
