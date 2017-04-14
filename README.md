@@ -6,6 +6,7 @@ Kuj-ga uses geolocation to find out where you are and gives you a list of restau
 
 * Built using **RaectJS**, **NodeJS** with **Express**
 * Tested using **Mocha**, **Chai**, **Enzyme**
+* Front end designed through Material UI
 
 ### User Stories
 
