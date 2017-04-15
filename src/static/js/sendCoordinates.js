@@ -16,5 +16,13 @@ function sendCoordinates(position){
   var longitude = position.coords.longitude;
   var latitude = position.coords.latitude;
   var data = {longitude: longitude, latitude: latitude}
-  $.post('/coordinates/new', data);
+  $.ajax({
+    url:'/coordinates/new',
+    method: "POST",
+    data:JSON.stringify(data),
+    dataType: "json",
+    contentType:"application/json; charset=utf-8",
+  })
+  .done(()=>{console.log('done')})
+  .fail(()=>{console.log('fail')});
 };

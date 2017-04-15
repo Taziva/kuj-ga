@@ -1,14 +1,60 @@
-"use strict";
-const getPlaces = require('../../src/static/js/getplaces').getPlaces;
+'use strict';
+const getRestaurants = require('../../src/static/js/getRestaurants').getRestaurants;
 const nock = require('nock');
 const expect = require('chai').expect;
+const sinon = require('sinon');
+const request = require('request-promise');
+const Bluebird = require('bluebird');
 
-describe('getPlaces', function() {
+describe('getRestaurants', function() {
+var position;
+beforeEach(function(){
+  position = {
+          longitude: 50,
+          latitude: 4
+      }
+  })
+
   it("should be a function", function(){
-    expect(getPlaces).to.be.a('function');
+    expect(getRestaurants).to.be.a('function');
   });
-  it("should return a Promise", function(){
-    expect(getPlaces().then).to.be.a('function');
-    expect(getPlaces().catch).to.be.a('function');
+
+  describe('API call', function() {
+    var requestGet;
+    var url;
+
+
+    beforeEach(function() {
+     url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=500&type=restaurant&key='+process.env.PLACES_KEY
+        requestGet = sinon.stub(request, 'get')
+        .returns(Bluebird.resolve([{ geometry: [Object],
+       icon: 'https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png',
+       id: 'a4c4bcbbf6c21c3269828b0471d9ffd2acead598',
+       name: 'al noor cash & carry',
+       opening_hours: [Object],
+       place_id: 'ChIJi0ReWts-dkgRWDDgRr8Ik6U',
+       reference: 'CmRSAAAA3Mn6hq4Dmm66nAQO5pEgQCwyURBGztmUsQ94oOvpd-69gmwh2CggXVvaiO1vlpq7nuxXED8rfK1Bg8gRyuv-tv7RSSgq6OjYxEYcMz1AC2ldwE732bCiBlE5wjDSJRE2EhBO-tYDwNEfc8ovqCwoeCVhGhTSc2koX64ZhGgGs8uPk89QLVAgyw',
+       scope: 'GOOGLE',
+       types: [Object],
+       vicinity: '73 Hatfield Road, St Albans' }])
+     );
+   });
+   it("should return a Promise", function(){
+     expect(getRestaurants(position).then).to.be.a('function');
+     expect(getRestaurants(position).catch).to.be.a('function');
+   })
+      it("should make an external call", function(){
+        return getRestaurants(position).then((response)=>{
+          expect(requestGet.calledOnce).to.be.true;
+        });
+      })
+      it("should return an object", function(){
+        return getRestaurants(position).then((response)=>{
+          expect(response).to.be.an('array')
+        });
+      })
+      afterEach(function() {
+        requestGet.restore();
+      })
   })
 })

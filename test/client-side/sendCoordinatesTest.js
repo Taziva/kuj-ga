@@ -1,10 +1,12 @@
+'use strict';
+
 var expect = chai.expect;
 
 describe('sendCoordinates', function() {
-    var post;
+    var ajax;
     var position
     beforeEach(function() {
-        post = sinon.stub($, 'post').callsFake(function(options) {});
+        ajax = sinon.stub($, 'ajax').callsFake(function(options) {});
         position = {
             coords: {
                 longitude: 50,
@@ -18,7 +20,7 @@ describe('sendCoordinates', function() {
     });
     it('should make an AJAX call', function() {
         sendCoordinates(position);
-        expect(post.calledOnce).to.be.true;
+        expect(ajax.calledOnce).to.be.true;
     });
     it('should send the correct parameters', function() {
         var expectedUrl = '/coordinates/new';
@@ -27,13 +29,13 @@ describe('sendCoordinates', function() {
             latitude: position.coords.latitude
         };
         sendCoordinates(position);
-        sinon.assert.calledWith(post, expectedUrl, expectedParams);
+        sinon.assert.calledWith(ajax, expectedUrl, expectedParams);
 
     })
     it('should be called with 1 argument', function() {
         expect(function(){sendCoordinates()}).to.throw(Error);
     });
     afterEach(function() {
-        post.restore();
+        ajax.restore();
     })
 });
