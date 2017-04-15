@@ -40,9 +40,9 @@ describe('Routes', function() {
       .end(function(err, res){
         res.should.have.status(200);
         res.body.should.be.an('array');
-        res.body.should.have.property('name');
-        res.body.should.have.property('id');
-        res.body.should.have.property('vicinity');
+        res.body[0].should.have.property('name');
+        res.body[0].should.have.property('id');
+        res.body[0].should.have.property('vicinity');
         done();
       })
     })
