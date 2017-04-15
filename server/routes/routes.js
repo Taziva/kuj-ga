@@ -8,10 +8,11 @@ router.get('/',function(req, res){
   })
 })
 
-router.post('/coordinates/new',function(req, res){
-  var position = req.body;
-  var url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+position.latitude+","+position.longitude+"&radius=500&type=restaurant&key="+process.env.PLACES_KEY
-  getRestaurants( position).then((response)=>{
+router.get('/coordinates/new',function(req, res){
+  var position = req.query;
+  console.log(req.query)
+  getRestaurants(position).then((response)=>{
+    console.log(response)
     res.json(response);
   })
 

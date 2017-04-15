@@ -17,12 +17,11 @@ function sendCoordinates(position){
   var latitude = position.coords.latitude;
   var data = {longitude: longitude, latitude: latitude}
   $.ajax({
+    data:data,
     url:'/coordinates/new',
-    method: "POST",
-    data:JSON.stringify(data),
     dataType: "json",
-    contentType:"application/json; charset=utf-8",
+    contentType:"application/json; charset=utf-8"
   })
-  .done(()=>{console.log('done')})
+  .done((response)=>{console.log(response)})
   .fail(()=>{console.log('fail')});
 };
