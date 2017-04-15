@@ -25,3 +25,4 @@ function sendCoordinates(position){
   .done((response)=>{console.log(response)})
   .fail(()=>{console.log('fail')});
 };
+module.exports = sendCoordinates;

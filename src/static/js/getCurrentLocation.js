@@ -6,3 +6,5 @@ function getCurrentLocation(){
     })
   });
 };
+
+module.exports = getCurrentLocation;

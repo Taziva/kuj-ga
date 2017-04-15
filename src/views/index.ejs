@@ -5,21 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0">
     <meta name="author" content="Mark Thomas">
-
+    <link rel="stylesheet" href="/css/loader.css">
     <title><%= title %></title>
   </head>
   <body>
     <h1>Welcome to <%=title %></h1>
     <div id="main">
-
+      <div class="loader"></div>
     </div>
-    <script
-  src="https://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
+    <!-- TODO: Remove backend jQuery ajax call to javascript -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="http://localhost:7700/src/static/js/bundle.js" charset="utf-8"></script>
-    <script src="js/getCurrentLocation.js"></script>
-    <script src="js/sendCoordinates.js" charset="utf-8"></script>
-    <script src="js/events.js"></script>
+    <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+    <script type="text/javascript">
+      window.sr = ScrollReveal();
+      sr.reveal('.restaurant');
+    </script>
   </body>
 </html>
