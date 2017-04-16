@@ -41,9 +41,7 @@ describe('<RestaurantListContainer />', () =>{
     expect(wrapper.state('restaurants')).to.eql(['KFC']);
   })
   it('renders the items', () => {
-   const wrapper = mount(<RestaurantListContainer/>);
-   wrapper.instance().addRestaurant('KFC');
-   wrapper.instance().addRestaurant('McDonalds');
+   const wrapper = mount(<RestaurantListContainer restaurants={["KFC","McDonalds"]}/>);
    expect(wrapper.find('li').length).to.equal(2);
  });
 })

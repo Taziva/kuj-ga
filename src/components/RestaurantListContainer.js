@@ -1,5 +1,6 @@
 import React from 'react';
-import  RestaurantList  from './RestaurantList'
+import  RestaurantList  from './RestaurantList';
+import AppBar from 'material-ui/AppBar'
 
 
 export default class RestaurantListContainer extends React.Component {
@@ -13,7 +14,8 @@ export default class RestaurantListContainer extends React.Component {
   render(){
     return(
       <div>
-        <RestaurantList items={this.state.restaurants} onSubmit={this.addRestaurant}/>
+        <AppBar title="Kuj-Ga" />
+        <RestaurantList items={this.props.restaurants} access={this.props.access} onSubmit={this.addRestaurant}/>
       </div>
     )
   }

@@ -1,12 +1,12 @@
 'use strict';
-const getRestaurants = require('../../src/static/js/getRestaurants').getRestaurants;
+const getPlaces = require('../../src/static/js/getPlaces').getPlaces;
 const nock = require('nock');
 const expect = require('chai').expect;
 const sinon = require('sinon');
 const request = require('request-promise');
 const Bluebird = require('bluebird');
 
-describe('getRestaurants', function() {
+describe('getPlaces', function() {
 var position;
 beforeEach(function(){
   position = {
@@ -16,12 +16,13 @@ beforeEach(function(){
   })
 
   it("should be a function", function(){
-    expect(getRestaurants).to.be.a('function');
+    expect(getPlaces).to.be.a('function');
   });
 
   describe('API call', function() {
     var requestGet;
     var url;
+    var option;
 
 
     beforeEach(function() {
@@ -38,18 +39,31 @@ beforeEach(function(){
        types: [Object],
        vicinity: '73 Hatfield Road, St Albans' }])
      );
+     option = {
+         uri: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json',
+         qs: {
+             location: '50,4',
+             radius: 500,
+             type: "restaurant",
+             key: process.env.PLACES_KEY // -> uri + '?access_token=xxxxx%20xxxxx'
+         },
+         headers: {
+             'User-Agent': 'Request-Promise'
+         },
+         json: true // Automatically parses the JSON string in the response
+     };
    });
    it("should return a Promise", function(){
-     expect(getRestaurants(position).then).to.be.a('function');
-     expect(getRestaurants(position).catch).to.be.a('function');
+     expect(getPlaces(option).then).to.be.a('function');
+     expect(getPlaces(option).catch).to.be.a('function');
    })
       it("should make an external call", function(){
-        return getRestaurants(position).then((response)=>{
+        return getPlaces(option).then((response)=>{
           expect(requestGet.calledOnce).to.be.true;
         });
       })
       it("should return an object", function(){
-        return getRestaurants(position).then((response)=>{
+        return getPlaces(option).then((response)=>{
           expect(response).to.be.an('array')
         });
       })

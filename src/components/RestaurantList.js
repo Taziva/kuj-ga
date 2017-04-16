@@ -1,5 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import Avatar from 'material-ui/Avatar'
 import FlatButton from 'material-ui/FlatButton';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
@@ -13,22 +15,30 @@ export default class RestaurantList extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
   render(){
-    return this.props.items?
+    return !this.props.items || this.props.items.error_message ?
+    <Card>
+      <CardText style={{ textAlign: 'center', cursor: 'none' }}>
+        Sorry, service currently not available
+      </CardText>
+    </Card>
+    :
     (
       <div>
         <input value={this.state.text} onChange={this.setText}/>
         <button onClick={this.handleClick}>Add</button>
-        <ul>
           {this.props.items.map((item, index) => (
-          <li key={index}>{item}</li>
+          <Card key={index} style={{marginTop:10}}>
+            <CardHeader
+              title={item.result.name}
+              avatar={<Avatar src={item.icon}/>}
+            />
+          <CardMedia>
+            <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=1000&photoreference=${item.result.photos[0].photo_reference}&key=${this.props.access}`} alt="Pic From Google" width="600"/>
+          </CardMedia>
+          </Card>
         ))}
-        </ul>
       </div>
-    ):
-    <div>
-      <input value={this.state.text} onChange={this.setText}/>
-      <button onClick={this.handleClick}>Add</button>
-    </div>
+    )
 
   }
   setText(event){
@@ -39,5 +49,5 @@ export default class RestaurantList extends React.Component {
   }
 }
 RestaurantList.PropTypes = {
-  onSubmit: React.PropTypes.func.isRequired
+  onSubmit: PropTypes.func.isRequired
 };

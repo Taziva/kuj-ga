@@ -1,7 +1,8 @@
 'use strict';
-function getCurrentLocation(){
+
+function getCurrentLocation(environment = navigator){
   return new Promise(function(resolve, reject) {
-    navigator.geolocation.getCurrentPosition(function( position){
+    environment.geolocation.getCurrentPosition(function( position){
       resolve(position);
     })
   });

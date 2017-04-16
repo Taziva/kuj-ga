@@ -16,14 +16,14 @@ describe('Routes', function() {
         done();
       })
   })
-  describe('GET coordinates/new', function() {
+  describe('GET restaurants/new', function() {
     it('should respond', function(done) {
       var position = {
           longitude: 50,
           latitude: 4
       }
       nock('https://maps.googleapis.com')
-      .get('/maps/api/place/nearbysearch/json?location='+position.latitude+'%2C'+position.longitude+'&radius=500&type=restaurant&key='+process.env.PLACES_KEY)
+      .get('/maps/api/place/nearbysearch/json?location='+position.latitude+'%2C'+position.longitude+'&radius=10000&type=restaurant&key='+process.env.PLACES_KEY)
       .reply(200, [{ geometry: ["geometry"],
      icon: 'https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png',
      id: 'restaurant_id',
@@ -35,7 +35,7 @@ describe('Routes', function() {
      types: ['restaunt, bar'],
      vicinity: '73 Fake Road, St Fake' }])
       chai.request(server)
-      .get('/coordinates/new')
+      .get('/restaurants/new')
       .query(position)
       .end(function(err, res){
         res.should.have.status(200);
