@@ -15,3 +15,4 @@ Kuj-ga uses geolocation to find out where you are and gives you a list of restau
 * As a user, so that I can find out more information about a place, I would like to be able to see more details about it.
 * As a user, so that I can that I can see if I can budget my night, I would like to be able to see how expensive a place is.
 * As a user, so that I can find my way to a place, I would like to get directions to it
+# Kuj-Ga
