@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '..', 'src', 'static')));
 app.use('/', routes);
 
-var server = app.listen(3000, function(){
+var server = app.listen((process.env.PORT || 3000), function(){
   var port = server.address().port
   console.log("All green server running on port: " + port);
 })
