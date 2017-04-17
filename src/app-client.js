@@ -16,7 +16,9 @@ const App = () => (
 );
 
 $(document).ready(() => {
-  ReactDOM.render(<App />, document.getElementById('main'));
+  ReactDOM.render((<MuiThemeProvider>
+    <RaisedButton className="init">Find Restaurants Near Me</RaisedButton>
+  </MuiThemeProvider>), document.getElementById('main'));
   $(".init").click(()=>{
     getCurrentLocation().then((position) =>{
       sendCoordinates('/restaurants/new',position).then((response)=>{
