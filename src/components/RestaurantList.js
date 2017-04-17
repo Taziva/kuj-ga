@@ -37,14 +37,9 @@ export default class RestaurantList extends React.Component {
       <div>
           {this.props.items.map((item, index) => (
           <Card className="content" key={index} style={{marginTop:10}}>
-            <CardHeader
-              title={item.result.name}
-              avatar={<Avatar backgroundColor={'#ffffff'} icon={<FontIcon style={{ color: '#00BCD4'}} className="fa fa-cutlery"/>}/>}
-              titleStyle={{fontWeight: 'bold', fontSize: 16, marginTop: 10}}
-            />
           {item.result.photos[0] ?
           <CardMedia
-            overlay={<CardTitle title={<a href={`https://www.google.com/maps/dir/${item.result.startLocation.lat},${item.result.startLocation.lng}/${item.result.geometry.location.lat},${item.result.geometry.location.lng}`} target="_blank">Directions</a>} subtitle={<a href={item.result.website} target="_blank">Restaurant Website</a>} />}
+            overlay={<CardTitle title={<a href={item.result.website} target="_blank">{item.result.name}</a>} subtitle={<a href={`https://www.google.com/maps/dir/${item.result.startLocation.lat},${item.result.startLocation.lng}/${item.result.geometry.location.lat},${item.result.geometry.location.lng}`} target="_blank">Get Directions</a>} />}
             >
             <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=600&photoreference=${item.result.photos[0].photo_reference}&key=${this.props.access}`} alt="Pic From Google" className="restaurant-image"/>
           </CardMedia>

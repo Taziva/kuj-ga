@@ -56,6 +56,7 @@ a, a:link, a:visited, a:focus, a:hover, a:active{
   }
   .init {
     margin: auto;
+    margin-top: 0.5em;
     width: 100%;
   }
 }

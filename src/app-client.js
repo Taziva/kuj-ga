@@ -6,6 +6,7 @@ const getCurrentLocation = require('./static/js/getCurrentLocation');
 const sendCoordinates = require('./static/js/sendCoordinates');
 import RaisedButton from 'material-ui/RaisedButton';
 import AppBar from 'material-ui/AppBar'
+import Paper from 'material-ui/Paper'
 
 
 const $ = require('jQuery');
@@ -19,7 +20,7 @@ const App = () => (
 
 $(document).ready(() => {
   ReactDOM.render((<MuiThemeProvider>
-    <div>
+    <div className="coating">
       <AppBar title="Kuj-Ga" />
       <RaisedButton primary={true} className="init">Find Restaurants Near Me</RaisedButton>
       <div id="content"></div>
