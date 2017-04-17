@@ -17,8 +17,10 @@
     100% { transform: rotate(360deg); }
 }
 
-.content {
-  width: 50%;
-  margin: auto;
-  margin-top: 2em;
+@media (min-width: 992px) {
+  .content {
+    width: 75%;
+    margin: auto;
+    margin-top: 2em;
+  }
 }
