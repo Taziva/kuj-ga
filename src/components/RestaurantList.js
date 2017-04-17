@@ -40,9 +40,6 @@ export default class RestaurantList extends React.Component {
               title={item.result.name}
               avatar={<Avatar src={item.icon}/>}
             />
-          <CardMedia>
-            <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=1000&photoreference=${item.result.photos[0].photo_reference}&key=${this.props.access}`} alt="Pic From Google" width="600"/>
-          </CardMedia>
           </Card>
         ))}
       </div>

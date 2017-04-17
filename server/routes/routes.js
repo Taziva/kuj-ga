@@ -26,7 +26,7 @@ router.get('/restaurants/new',function(req, res){
         places.push(details);
         increment++;
         if(increment === response.results.length){
-          res.json({results:places, access:process.env.PLACES_KEY})
+          res.json({results:places})
         };
       })
     })

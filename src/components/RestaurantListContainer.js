@@ -15,7 +15,7 @@ export default class RestaurantListContainer extends React.Component {
     return(
       <div>
         <AppBar title="Kuj-Ga" />
-        <RestaurantList items={this.props.restaurants} access={this.props.access} onSubmit={this.addRestaurant}/>
+        <RestaurantList items={this.props.restaurants} onSubmit={this.addRestaurant}/>
       </div>
     )
   }
