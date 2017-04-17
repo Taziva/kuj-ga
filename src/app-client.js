@@ -43,6 +43,8 @@ $(document).ready(() => {
           </MuiThemeProvider>
         ), document.getElementById('content'));
       });
+    }).catch((err)=>{
+      alert("Sorry can't access location because:" err)
     })
   })
 });
