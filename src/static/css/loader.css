@@ -25,6 +25,16 @@ a, a:link, a:visited, a:focus, a:hover, a:active{
   cursor: auto;
 }
 
+.init {
+  margin: 2em 0em 2em 0em;
+  margin-left: 25%;
+  width: 50%;
+}
+
+.init button div div{
+  color: white;
+}
+
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
@@ -43,5 +53,9 @@ a, a:link, a:visited, a:focus, a:hover, a:active{
   .content {
     margin-top: 2em;
     padding-bottom: 0em;
+  }
+  .init {
+    margin: auto;
+    width: 100%;
   }
 }
