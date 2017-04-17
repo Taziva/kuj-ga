@@ -17,17 +17,15 @@ export default class RestaurantList extends React.Component {
   render(){
     return !this.props.items || this.props.items.error_message ?
     <Card>
-      <CardText style={{ textAlign: 'center' }}>
+      <CardText className="content" style={{ textAlign: 'center' }}>
         Sorry, service currently not available
       </CardText>
     </Card>
     :
     (
       <div>
-        <input value={this.state.text} onChange={this.setText}/>
-        <button onClick={this.handleClick}>Add</button>
           {this.props.items.map((item, index) => (
-          <Card key={index} style={{marginTop:10}}>
+          <Card className="content" key={index} style={{marginTop:10}}>
             <CardHeader
               title={item.result.name}
               avatar={<Avatar src={item.icon}/>}

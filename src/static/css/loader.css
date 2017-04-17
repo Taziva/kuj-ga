@@ -17,7 +17,8 @@
     100% { transform: rotate(360deg); }
 }
 
-#main {
+.content {
   width: 50%;
   margin: auto;
+  margin-top: 2em;
 }
