@@ -3,7 +3,7 @@
 function getCurrentLocation(environment = navigator){
   if (navigator && navigator.geolocation) {
     return new Promise(function(resolve, reject) {
-      environment.geolocation.getCurrentPosition(function( position){
+      environment.geolocation.watchPosition(function( position){
         resolve(position);
       })
     });
