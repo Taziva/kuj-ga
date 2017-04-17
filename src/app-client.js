@@ -17,10 +17,10 @@ const App = () => (
 
 $(document).ready(() => {
   getCurrentLocation().then((position) =>{
-    sendCoordinates('/restaurants/new',position).then((response)=>{
+    sendCoordinates('/restaurants/new',position).then((response)=>{ console.log(response)
     ReactDOM.render((
       <MuiThemeProvider>
-        <RestaurantListContainer restaurants={response.results} />
+        <RestaurantListContainer restaurants={response.results} access={response.access} />
       </MuiThemeProvider>
     ), document.getElementById('main'));}).catch((reject)=>{
       ReactDOM.render((

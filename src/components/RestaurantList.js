@@ -6,6 +6,7 @@ import Avatar from 'material-ui/Avatar'
 import FlatButton from 'material-ui/FlatButton';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
+
 export default class RestaurantList extends React.Component {
   constructor(props){
     super(props);
@@ -38,8 +39,22 @@ export default class RestaurantList extends React.Component {
           <Card className="content" key={index} style={{marginTop:10}}>
             <CardHeader
               title={item.result.name}
-              avatar={<Avatar src={item.icon}/>}
+              avatar={<Avatar backgroundColor={'#ffffff'} icon={<FontIcon style={{ color: '#00BCD4'}} className="fa fa-cutlery"/>}/>}
+              titleStyle={{fontWeight: 'bold', fontSize: 16, marginTop: 10}}
             />
+          {item.result.photos[0] ?
+          <CardMedia
+            overlay={<CardTitle title={<a href={`https://www.google.com/maps/dir/${item.result.startLocation.lat},${item.result.startLocation.lng}/${item.result.geometry.location.lat},${item.result.geometry.location.lng}`} target="_blank">Directions</a>} subtitle={<a href={item.result.website} target="_blank">Restaurant Website</a>} />}
+            >
+            <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=600&photoreference=${item.result.photos[0].photo_reference}&key=${this.props.access}`} alt="Pic From Google" className="restaurant-image"/>
+          </CardMedia>
+          :
+          <CardMedia
+            overlay={<CardTitle title={item.result.vicinity} subtitle={<a href={item.result.website} target="_blank">Website</a>} />}
+            >
+            <FontIcon className="content-text" style={{fontSize: 192, color: '#66605a' }} className="fa fa-frown-o" aria-hidden="true" className="restaurant-image"> Sorry, no image available</FontIcon>
+          </CardMedia>
+        }
           </Card>
         ))}
       </div>

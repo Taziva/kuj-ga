@@ -32,7 +32,7 @@ function sendCoordinates(url, position, xhr = new XMLHttpRequest()){
     xhr.send();
     setTimeout(function() {
             reject('Promise timed out after 5 seconds');
-        }, 7000);
+        }, 15000);
   });
 };
 module.exports = sendCoordinates;

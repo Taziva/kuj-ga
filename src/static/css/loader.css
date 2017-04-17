@@ -12,6 +12,19 @@
     margin-left: -50px;
 }
 
+.restaurant-image{
+    height: auto;
+    width: auto;
+    max-width: 600px;
+    max-height: 600px;
+}
+
+a, a:link, a:visited, a:focus, a:hover, a:active{
+  color:#dfdfdf;
+  text-decoration:none;
+  cursor: auto;
+}
+
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
@@ -22,5 +35,13 @@
     width: 75%;
     margin: auto;
     margin-top: 2em;
+    padding-bottom: 0em;
+  }
+}
+
+@media (max-width:992px) {
+  .content {
+    margin-top: 2em;
+    padding-bottom: 0em;
   }
 }
