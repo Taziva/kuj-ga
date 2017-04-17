@@ -16,8 +16,8 @@ export default class RestaurantList extends React.Component {
   }
   render(){
     return !this.props.items || this.props.items.error_message ?
-    <Card>
-      <CardText className="content" style={{ textAlign: 'center' }}>
+    <Card className="content">
+      <CardText  style={{ textAlign: 'center' }}>
         Sorry, service currently not available
       </CardText>
     </Card>
