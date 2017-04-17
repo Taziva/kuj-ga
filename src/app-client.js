@@ -4,30 +4,33 @@ import RestaurantListContainer from './components/RestaurantListContainer';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 const getCurrentLocation = require('./static/js/getCurrentLocation');
 const sendCoordinates = require('./static/js/sendCoordinates');
+import FlatButton from 'material-ui/FlatButton';
+
 const $ = require('jQuery');
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 injectTapEventPlugin();
 
 const App = () => (
-  <MuiThemeProvider>
-    <RestaurantListContainer />
-  </MuiThemeProvider>
+  <RaisedButton className="init">Find Restaurants Near Me</RaisedButton>
 );
 
 $(document).ready(() => {
-  getCurrentLocation().then((position) =>{
-    sendCoordinates('/restaurants/new',position).then((response)=>{ console.log(response)
-    ReactDOM.render((
-      <MuiThemeProvider>
-        <RestaurantListContainer restaurants={response.results} access={response.access} />
-      </MuiThemeProvider>
-    ), document.getElementById('main'));}).catch((reject)=>{
+  ReactDOM.render(<App />, document.getElementById('main'));
+  $(".init").click(()=>{
+    getCurrentLocation().then((position) =>{
+      sendCoordinates('/restaurants/new',position).then((response)=>{
       ReactDOM.render((
         <MuiThemeProvider>
-          <RestaurantListContainer />
+          <RestaurantListContainer restaurants={response.results} access={response.access} />
         </MuiThemeProvider>
-      ), document.getElementById('main'));
-    });
+      ), document.getElementById('main'));}).catch((reject)=>{
+        ReactDOM.render((
+          <MuiThemeProvider>
+            <RestaurantListContainer />
+          </MuiThemeProvider>
+        ), document.getElementById('main'));
+      });
+    })
   })
 });
