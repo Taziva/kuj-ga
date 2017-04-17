@@ -1,11 +1,16 @@
 'use strict';
 
 function getCurrentLocation(environment = navigator){
-  return new Promise(function(resolve, reject) {
-    environment.geolocation.getCurrentPosition(function( position){
-      resolve(position);
-    })
-  });
+  if (navigator && navigator.geolocation) {
+    return new Promise(function(resolve, reject) {
+      environment.geolocation.getCurrentPosition(function( position){
+        resolve(position);
+      })
+    });
+  }
+  else{
+    alert('Geolocation is not supported')
+  }
 };
 
 module.exports = getCurrentLocation;
