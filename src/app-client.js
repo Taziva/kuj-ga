@@ -4,7 +4,7 @@ import RestaurantListContainer from './components/RestaurantListContainer';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 const getCurrentLocation = require('./static/js/getCurrentLocation');
 const sendCoordinates = require('./static/js/sendCoordinates');
-import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
 
 const $ = require('jQuery');
 import injectTapEventPlugin from 'react-tap-event-plugin';
