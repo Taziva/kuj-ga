@@ -16,7 +16,7 @@ export default class RestaurantList extends React.Component {
   }
   render(){
     return !this.props.items || this.props.items.error_message ?
-    <Card className="content">
+    <Card class="content">
       <CardText  style={{ textAlign: 'center' }}>
         Sorry, service currently not available
       </CardText>
@@ -25,7 +25,7 @@ export default class RestaurantList extends React.Component {
     (
       <div>
           {this.props.items.map((item, index) => (
-          <Card className="content" key={index} style={{marginTop:10}}>
+          <Card class="content" key={index} style={{marginTop:10}}>
             <CardHeader
               title={item.result.name}
               avatar={<Avatar src={item.icon}/>}
