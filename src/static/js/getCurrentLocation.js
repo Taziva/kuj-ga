@@ -5,7 +5,9 @@ function getCurrentLocation(environment = navigator){
     return new Promise(function(resolve, reject) {
       environment.geolocation.watchPosition(function( position){
         resolve(position);
-      })
+      }),()=>{
+        alert('Unable to find your location')
+      }, {enableHighAccuracy: true}
     });
   }
   else{
