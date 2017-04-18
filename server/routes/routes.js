@@ -16,23 +16,22 @@ router.get('/restaurants/new',function(req, res){
       location: position.latitude+','+position.longitude,
       radius: 10000,
       rankby: "prominence",
-      opennow: "true",
       type: "restaurant",
       key: process.env.PLACES_KEY
   };
   getPlaces(optionsConstructer(uri, qs)).then((response)=>{
     var places = []
     var increment = 0;
+    console.log(response.results.length)
     response.results.forEach((place)=>{
       getPlaces(optionsConstructer("https://maps.googleapis.com/maps/api/place/details/json",{placeid:place.place_id, key:process.env.PLACES_KEY})).then((details)=>{
         details.result.startLocation = {lat: position.latitude, lng: position.longitude}
         places.push(details);
-        console.log(increment);
         increment++;
         if(increment === response.results.length){
           res.json({results:places, access:process.env.PLACES_KEY})
         };
-      })
+      }).then
     })
   })
 

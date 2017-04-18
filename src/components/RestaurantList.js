@@ -22,6 +22,16 @@ export default class RestaurantList extends React.Component {
         color: '#66605a'}
       )
   }
+  showSubtitle(item){
+    if(item.result.opening_hours){
+      return(<div><p>{
+          item.result.opening_hours.open_now === false? "Closed": "Open"
+        }</p>
+      <a href={`https://www.google.com/maps/dir/${item.result.startLocation.lat},${item.result.startLocation.lng}/${item.result.geometry.location.lat},${item.result.geometry.location.lng}`} target="_blank">Get Directions</a></div>)
+    }else{
+      return(<a href={`https://www.google.com/maps/dir/${item.result.startLocation.lat},${item.result.startLocation.lng}/${item.result.geometry.location.lat},${item.result.geometry.location.lng}`} target="_blank">Get Directions</a>)
+    }
+    }
   render(){
     return !this.props.items || this.props.items.error_message ?
     <Card className="content">
@@ -39,7 +49,7 @@ export default class RestaurantList extends React.Component {
           <Card className="content" key={index} style={{marginTop:10}}>
           {item.result.photos[0] ?
           <CardMedia
-            overlay={<CardTitle title={<a href={item.result.website} target="_blank">{item.result.name}</a>} subtitle={<a href={`https://www.google.com/maps/dir/${item.result.startLocation.lat},${item.result.startLocation.lng}/${item.result.geometry.location.lat},${item.result.geometry.location.lng}`} target="_blank">Get Directions</a>} />}
+            overlay={<CardTitle title={<a href={item.result.website} target="_blank">{item.result.name}</a>} subtitle={this.showSubtitle(item)} />}
             >
             <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=600&photoreference=${item.result.photos[0].photo_reference}&key=${this.props.access}`} alt="Pic From Google" className="restaurant-image"/>
           </CardMedia>

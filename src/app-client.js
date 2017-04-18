@@ -37,6 +37,7 @@ $(document).ready(() => {
           <RestaurantListContainer restaurants={response.results} access={response.access} />
         </MuiThemeProvider>
       ), document.getElementById('content'));}).catch((reject)=>{
+        console.log(reject)
         $("#content").removeClass('loader');
         ReactDOM.render((
           <MuiThemeProvider>
