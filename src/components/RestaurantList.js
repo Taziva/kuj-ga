@@ -24,9 +24,9 @@ export default class RestaurantList extends React.Component {
   }
   showSubtitle(item){
     if(item.result.opening_hours){
-      return(<div><p>{
+      return(<div>{
           item.result.opening_hours.open_now === false? "Closed": "Open"
-        }</p>
+        }<br/>
       <a href={`https://www.google.com/maps/dir/${item.result.startLocation.lat},${item.result.startLocation.lng}/${item.result.geometry.location.lat},${item.result.geometry.location.lng}`} target="_blank">Get Directions</a></div>)
     }else{
       return(<a href={`https://www.google.com/maps/dir/${item.result.startLocation.lat},${item.result.startLocation.lng}/${item.result.geometry.location.lat},${item.result.geometry.location.lng}`} target="_blank">Get Directions</a>)
@@ -49,8 +49,8 @@ export default class RestaurantList extends React.Component {
           <Card className="content" key={index} style={{marginTop:10}}>
           {item.result.photos[0] ?
           <CardMedia
-            overlay={<CardTitle title={<a href={item.result.website} target="_blank">{item.result.name}</a>} subtitle={this.showSubtitle(item)} />}
-            >
+            overlay={<CardTitle title={<a href={item.result.website} target="_blank">{item.result.name}</a>} titleStyle={{fontSize: 16}} subtitle={this.showSubtitle(item)} subtitleStyle={{fontSize:12}} />}
+            overlayStyle={{paddingTop:0}}>
             <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=600&photoreference=${item.result.photos[0].photo_reference}&key=${this.props.access}`} alt="Pic From Google" className="restaurant-image"/>
           </CardMedia>
           :

@@ -30,7 +30,9 @@ a, a:link, a:visited, a:focus, a:hover, a:active{
   margin-left: 42%;
   width: 14%;
 }
-
+.content div div div div div {
+  padding-top: 0em !important;
+}
 .init button div div{
   color: white;
 }
@@ -58,5 +60,12 @@ a, a:link, a:visited, a:focus, a:hover, a:active{
     margin: auto;
     margin-top: 0.5em;
     width: 100%;
+  }
+  .loader {
+    margin-left: -80px;
+  }
+  h1 {
+    text-align: center !important;
+    margin-left: -2em !important;
   }
 }
