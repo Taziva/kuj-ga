@@ -22,7 +22,7 @@ $(document).ready(() => {
   ReactDOM.render((<MuiThemeProvider>
     <div className="coating">
       <AppBar title="Kuj-Ga" />
-      <RaisedButton primary={true} className="init">Find Restaurants Near Me</RaisedButton>
+      <RaisedButton primary={true} className="init">Find Restaurants</RaisedButton>
       <div id="content"></div>
     </div>
   </MuiThemeProvider>), document.getElementById('main'));
@@ -37,7 +37,6 @@ $(document).ready(() => {
           <RestaurantListContainer restaurants={response.results} access={response.access} />
         </MuiThemeProvider>
       ), document.getElementById('content'));}).catch((reject)=>{
-        console.log(reject)
         $("#content").removeClass('loader');
         ReactDOM.render((
           <MuiThemeProvider>

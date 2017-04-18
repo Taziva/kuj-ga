@@ -22,7 +22,6 @@ router.get('/restaurants/new',function(req, res){
   getPlaces(optionsConstructer(uri, qs)).then((response)=>{
     var places = []
     var increment = 0;
-    console.log(response.results.length)
     response.results.forEach((place)=>{
       getPlaces(optionsConstructer("https://maps.googleapis.com/maps/api/place/details/json",{placeid:place.place_id, key:process.env.PLACES_KEY})).then((details)=>{
         details.result.startLocation = {lat: position.latitude, lng: position.longitude}

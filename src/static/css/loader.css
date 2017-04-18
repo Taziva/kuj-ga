@@ -9,7 +9,7 @@
     top: 50%;
     left: 50%;
     margin-top: -50px;
-    margin-left: -50px;
+    margin-left: -90px;
 }
 
 .restaurant-image{
@@ -27,8 +27,8 @@ a, a:link, a:visited, a:focus, a:hover, a:active{
 
 .init {
   margin: 2em 0em 2em 0em;
-  margin-left: 25%;
-  width: 50%;
+  margin-left: 42%;
+  width: 14%;
 }
 
 .init button div div{
