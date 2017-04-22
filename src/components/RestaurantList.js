@@ -53,7 +53,7 @@ export default class RestaurantList extends React.Component {
             {item.result.photos?
             <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=600&photoreference=${item.result.photos[0].photo_reference}&key=${this.props.access}`} alt="Pic From Google" className="restaurant-image"/>
             :
-            <img src="http://www.daleweeksphotography.co.uk/wp-content/themes/como/img/aq_resize/noimage-600x600.jpg" alt="Pic From Google" className="restaurant-image"/>
+            <img src="https://maxcdn.icons8.com/Share/icon/City//no_camera1600.png" alt="Pic From Google" className="restaurant-image"/>
             }
           </CardMedia>
         </Card>
