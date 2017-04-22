@@ -16,6 +16,7 @@ router.get('/restaurants/new',function(req, res){
       location: position.latitude+','+position.longitude,
       rankby: "distance",
       type: "restaurant",
+      opennow:"true",
       key: process.env.PLACES_KEY
   };
   getPlaces(optionsConstructer(uri, qs)).then((response)=>{
