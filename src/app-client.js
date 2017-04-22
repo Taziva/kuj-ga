@@ -22,11 +22,11 @@ $(document).ready(() => {
   ReactDOM.render((<MuiThemeProvider>
     <div className="coating">
       <AppBar title="Kuj-Ga" />
-      <RaisedButton primary={true} className="init">Find Restaurants</RaisedButton>
+      <RaisedButton primary={true} className="get-restaurants">Find Restaurants</RaisedButton>
       <div id="content"></div>
     </div>
   </MuiThemeProvider>), document.getElementById('main'));
-  $(".init").click(()=>{
+  $(".get-restaurants").click(()=>{
     $("#content").addClass('loader')
     $("#content").html('');
     getCurrentLocation().then((position) =>{

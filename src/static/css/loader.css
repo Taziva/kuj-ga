@@ -25,7 +25,7 @@ a, a:link, a:visited, a:focus, a:hover, a:active{
   cursor: auto;
 }
 
-.init {
+.get-restaurants {
   margin: 2em 0em 2em 0em;
   margin-left: 42%;
   width: 14%;
@@ -33,7 +33,7 @@ a, a:link, a:visited, a:focus, a:hover, a:active{
 .content div div div div div {
   padding-top: 0em !important;
 }
-.init button div div{
+.get-restaurants button div div{
   color: white;
 }
 
@@ -56,7 +56,7 @@ a, a:link, a:visited, a:focus, a:hover, a:active{
     margin-top: 2em;
     padding-bottom: 0em;
   }
-  .init {
+  .get-restaurants {
     margin: auto;
     margin-top: 0.5em;
     width: 100%;
