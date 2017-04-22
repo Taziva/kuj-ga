@@ -14,8 +14,7 @@ router.get('/restaurants/new',function(req, res){
   var uri = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json';
   var qs = {
       location: position.latitude+','+position.longitude,
-      radius: 10000,
-      rankby: "prominence",
+      rankby: "distance",
       type: "restaurant",
       key: process.env.PLACES_KEY
   };
@@ -27,10 +26,10 @@ router.get('/restaurants/new',function(req, res){
         details.result.startLocation = {lat: position.latitude, lng: position.longitude}
         places.push(details);
         increment++;
-        if(increment === response.results.length){
+        if(places.length === response.results.length){
           res.json({results:places, access:process.env.PLACES_KEY})
         };
-      }).then
+      })
     })
   })
 

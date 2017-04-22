@@ -45,26 +45,21 @@ export default class RestaurantList extends React.Component {
     :
     (
       <div>
-          {this.props.items.map((item, index) => (
-          <Card className="content" key={index} style={{marginTop:10}}>
-          {item.result.photos[0] ?
+          {this.props.items.map((item) => (
+          <Card className="content" style={{marginTop:10}}>
           <CardMedia
             overlay={<CardTitle title={<a href={item.result.website} target="_blank">{item.result.name}</a>} titleStyle={{fontSize: 16}} subtitle={this.showSubtitle(item)} subtitleStyle={{fontSize:12}} />}
             overlayStyle={{paddingTop:0}}>
+            {item.result.photos?
             <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=600&photoreference=${item.result.photos[0].photo_reference}&key=${this.props.access}`} alt="Pic From Google" className="restaurant-image"/>
+            :
+            <img src="http://www.daleweeksphotography.co.uk/wp-content/themes/como/img/aq_resize/noimage-600x600.jpg" alt="Pic From Google" className="restaurant-image"/>
+            }
           </CardMedia>
-          :
-          <CardMedia
-            overlay={<CardTitle title={item.result.vicinity} subtitle={<a href={item.result.website} target="_blank">Website</a>} />}
-            >
-            <FontIcon className="content-text" style={{fontSize: 192, color: '#66605a' }} className="fa fa-frown-o" aria-hidden="true" className="restaurant-image"> Sorry, no image available</FontIcon>
-          </CardMedia>
-        }
-          </Card>
+        </Card>
         ))}
       </div>
     )
-
   }
   setText(event){
     this.setState({text: event.target.value})
