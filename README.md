@@ -2,6 +2,8 @@
 
 Kuj-ga uses geolocation to find out where you are and gives you a list of restaurants and bars close to you, with directions.
 
+Demo Available on Heroku here: https://uj-a.herokuapp.com/
+
 ### Technologies
 
 * Built using **RaectJS**, **NodeJS** with **Express**
